@@ -1,0 +1,153 @@
+{
+	"type": "object",
+	"properties": {
+		"issuer": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"desc": {
+					"type": "string"
+				},
+				"url": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"id",
+				"name"
+			]
+		},
+		"assertion": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"level": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"id",
+				"name",
+				"type",
+				"level"
+			]
+		},
+		"claim": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"logo": {
+					"type": "object",
+					"required": [
+						"type",
+						"data"
+					],
+					"properties": {
+						"type": {
+							"type": "string",
+							"enum": [
+								"dataURL"
+							]
+						},
+						"data": {
+							"type": "string"
+						}
+					}
+				},
+				"issued": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"expires": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"public_key": {
+					"type": "string"
+				},
+				"privacy": {
+					"type": "object",
+					"properties": {
+						"unprotected": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"type",
+									"value"
+								],
+								"properties": {
+									"type": {
+										"type": "string",
+										"enum": [
+											"birthday",
+											"email",
+											"address",
+											"ageOver19",
+											"phone"
+										]
+									},
+									"value": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"protected": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"required": [
+				"id",
+				"name",
+				"issued",
+				"expires",
+				"public_key"
+			]
+		},
+		"copy": {
+			"type": "object",
+			"properties": {
+				"issued": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"expires": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"authorizedServiceProvider": {
+					"type": "string"
+				}
+			}
+		},
+		"signature": {
+			"type": "string"
+		}
+	},
+	"required": [
+		"issuer",
+		"assertion",
+		"claim"
+	]
+}

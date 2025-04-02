@@ -20,6 +20,8 @@ import org.omnione.did.cli.OmniCLI;
 import org.omnione.did.cli.command.did.Did;
 import org.omnione.did.cli.command.generator.Auto;
 import org.omnione.did.cli.command.walletmanager.WalletManager;
+import org.omnione.did.cli.command.walletmanager.ZKPWalletManager;
+import org.omnione.did.cli.command.walletmanager.ZkpCredentialSchema;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
@@ -29,7 +31,8 @@ import java.util.concurrent.Callable;
         subcommands = {
                 WalletManager.class,
                 Did.class,
-                Auto.class
+                Auto.class,
+                ZKPWalletManager.class
         })
 public class Omni implements Callable<Void> {
 
