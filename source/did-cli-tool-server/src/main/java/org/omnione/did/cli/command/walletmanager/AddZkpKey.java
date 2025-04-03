@@ -42,8 +42,8 @@ public class AddZkpKey implements Callable<Void> {
     @Option(names = {"-p", "--wallet-manager-password"}, required = true, interactive = true, description = "Wallet password")
     public char[] password;
 
-    //@Option(names = {"-i", "--key-id"}, required = true, description = "Wallet ZKP key Id")
-    //public String keyId;
+    @Option(names = {"-i", "--key-id"}, required = true, description = "Wallet ZKP key Id")
+    public String keyId;
 
     @Override
     public Void call() throws Exception {
@@ -66,7 +66,7 @@ public class AddZkpKey implements Callable<Void> {
             CredentialPrimaryPrivateKey privateKey = KeyPairGenerator.generatePrivateKey("masterSecret");
 
             System.out.println("zkpKeys");
-            //System.out.println("keyId : " + keyId);
+            System.out.println("keyId : " + keyId);
             System.out.println("privateKey");
             System.out.println("p : " + privateKey.getP());
             System.out.println("q : " + privateKey.getQ());
