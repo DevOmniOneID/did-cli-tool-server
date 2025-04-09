@@ -27,7 +27,11 @@ import java.util.concurrent.Callable;
                 AddKey.class,
                 KeyList.class,
                 RemoveKey.class,
-                AddZkpKey.class
+                AddZkpKey.class,
+                ZkpKeyList.class,
+                RemoveZkpKey.class,
+                ZkpCredentialSchema.class,
+                ZkpCredentialDefinition.class
         })
 public class WalletManager implements Callable<Void> {
 

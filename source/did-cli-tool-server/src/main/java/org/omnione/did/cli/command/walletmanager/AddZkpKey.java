@@ -42,8 +42,14 @@ public class AddZkpKey implements Callable<Void> {
     @Option(names = {"-p", "--wallet-manager-password"}, required = true, interactive = true, description = "Wallet password")
     public char[] password;
 
+    @Option(names = {"-s", "--zkp-credential-schema"}, required = true, description = "ZKP credential schema file path")
+    public String zkpCredSchema;
+
     @Option(names = {"-i", "--key-id"}, required = true, description = "Wallet ZKP key Id")
     public String keyId;
+
+    @Option(names = {"-t", "--key-type"}, required = true, description = "Wallet ZKP key type: 0(AnonCredsIssuer)")
+    public Integer keyType = 0;
 
     @Override
     public Void call() throws Exception {

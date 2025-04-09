@@ -32,7 +32,7 @@ import org.omnione.did.wallet.zkp.revoc.sdk.response.ZkpCreateSchemaResponse;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Command(name = "createZkpCredSchema", mixinStandardHelpOptions = true, version = OmniCLI.VERSION, description = "Create ZKP CredentialSchema")
+@Command(name = "createZkpCredSchema", mixinStandardHelpOptions = true, version = OmniCLI.VERSION, description = "Create ZKP AnonCreds CredentialSchema")
 public class ZkpCredentialSchema implements Callable<Void> {
 
     @Option(names = {"-s", "--zkp-credential-schema"}, required = true, description = "ZKP credential schema file path")
@@ -41,14 +41,14 @@ public class ZkpCredentialSchema implements Callable<Void> {
     @Option(names = {"-sn", "--zkp-schema-name"}, required = true, description = "ZKP schema name")
     public String zkpSchemaName;
 
+    @Option(names = {"-id", "--issuer-did"}, required = true, description = "Issuer DID")
+    public String issuerDid;
+
     @Option(names = {"-sv", "--zkp-schema-version"}, required = true, description = "ZKP schema version")
     public String zkpSchemaVersion;
 
     @Option(names = {"-st", "--zkp-schema-tag"}, required = true, description = "ZKP schema tag")
     public String zkpSchemaTag;
-
-    @Option(names = {"-id", "--issuer-did"}, required = true, description = "Issuer DID")
-    public String issuerDid;
 
     @Option(names = {"-al", "--zkp-attribute-list"}, required = true, split = ",", description = "ZKP attribute list")
     public List<String> attributeList;

@@ -42,16 +42,16 @@ import org.omnione.did.wallet.zkp.util.helper.CredentialDefinitionHelper;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Command(name = "createZkpCredDef", mixinStandardHelpOptions = true, version = OmniCLI.VERSION, description = "Create ZKP CredentialDefinition")
+@Command(name = "createZkpCredDef", mixinStandardHelpOptions = true, version = OmniCLI.VERSION, description = "Create ZKP AnonCreds CredentialDefinition")
 public class ZkpCredentialDefinition implements Callable<Void> {
 
     @Option(names = {"-s", "--zkp-credential-schema"}, required = true, description = "ZKP credential schema file path")
     public String zkpCredSchema;
 
-    @Option(names = {"-m", "--zkp-wallet-manager"}, required = true, description = "ZKP wallet file path")
-    public String zkpWalletManager;
+    @Option(names = {"-m", "--wallet-manager"}, required = true, description = "Wallet file path")
+    public String walletManager;
 
-    @Option(names = {"-p", "--zkp-wallet-manager-password"}, required = true, interactive = true, description = "ZKP wallet password")
+    @Option(names = {"-p", "--wallet-manager-password"}, required = true, interactive = true, description = "Wallet password")
     public char[] password;
 
     @Override
@@ -76,7 +76,7 @@ public class ZkpCredentialDefinition implements Callable<Void> {
         CredentialDefinitionInfo credDefInfo = new CredentialDefinitionInfo(credentialDefinition, new CredentialDefinitionPrivateKey(credentialPrimaryKeyPair.getPrivateKey(), null), keyCorrectnessProof);
 
         //2. insert credential definition to zkp wallet
-        IWKeyManager keyManager = new IWKeyManager(zkpWalletManager);
+        IWKeyManager keyManager = new IWKeyManager(walletManager);
         Sha256 hash = Sha256.from(String.valueOf(password).getBytes());
         byte[] key = hash.getBytes();
 
